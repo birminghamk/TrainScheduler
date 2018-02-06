@@ -49,5 +49,28 @@ $(function () {
 		}) // END DATABASE PUSH
 			
 	}); // END SUBMIT BUTTON CLICK
+
+	database.ref().on("child_added", function(childSnapshot) {
+
+		console.log(childSnapshot.val().train);
+		console.log(childSnapshot.val().destination);
+		console.log(childSnapshot.val().time1);
+		console.log(childSnapshot.val().frequency);
+
+
+
+	}, function (errorObject) {
+		console.log("Errors handled: " + errorObject.code);
+
+	});
+
+	database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
+
+		$("#train-display").text(snapshot.val().train);
+		$("#destination-display").text(snapshot.val().destination);
+		$("#frequency-display").text(snapshot.val().frequency);
+		
+
+	})
 		
 }) // END DOCUMENT READY
