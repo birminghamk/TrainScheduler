@@ -37,7 +37,7 @@ $(function () {
 		//first train time(military time)
 		time1 = $("#time-input").val().trim();
 		//frequency(mins)
-		frequency = parseInt($("#frequency-input")).val().trim();
+		frequency = parseInt($("#frequency-input").val().trim());
 
 		//code for push to database
 		database.ref().push({
