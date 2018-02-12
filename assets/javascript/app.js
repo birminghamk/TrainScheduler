@@ -28,8 +28,6 @@ $(function () {
 
 	//on click-submit button
 	$("#submit").on("click", function(event) {
-		event.preventDefault();
-
 		//stored in database-
 		train = $("#train-input").val().trim();
 		//destination
@@ -47,6 +45,8 @@ $(function () {
 			frequency: frequency,
 			dateAdded: firebase.database.ServerValue.TIMESTAMP
 		}) // END DATABASE PUSH
+
+		event.preventDefault();
 
 	}); // END SUBMIT BUTTON CLICK
 
@@ -98,6 +98,7 @@ $(function () {
     trainRow.append(trainName, destination, frequency, nextArrival, minutesAway);
     //appends trainRow to tbody
     $("tbody").append(trainRow);
+
 
 
 	})
